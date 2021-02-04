@@ -10,6 +10,8 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Javascript connected!");
+
+	$("a.friendname").click(changeName);
 }
 
 function anagrammedName(name) {
@@ -43,4 +45,20 @@ function anagrammedName(name) {
 		console.log(name + " not known for anagramming.");
 		return name;
 	}
+}
+
+function changeName(e) {
+	e.preventDefault();
+	var friendSelected = $(this).closest(".friendname");
+	var name = $(friendSelected).text();
+	$(friendSelected).text(anagrammedName(name));
+
+
+	// var containingProject = $(this).closest(".project");
+    // var description = $(containingProject).find(".project-description");
+    // if (description.length == 0) {
+    //    $(containingProject).append("<div class='project-description'><p>Description of the project.</p></div>");
+    // } else {
+	// 	$(containingProject).find(".project-description").fadeOut();
+	// }
 }
